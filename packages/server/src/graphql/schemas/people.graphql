@@ -1,0 +1,15 @@
+extend type Query {
+    people(input:Page!): [Person!]!
+}
+
+input Page { 
+    page: String!
+}
+
+type Person{ 
+    name: String!
+    height: String!
+    mass: String!
+    gender: String!
+    homeworld: String!
+}

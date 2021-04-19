@@ -1,5 +1,5 @@
 import { IResolvers } from 'graphql-tools';
-import { AuthenticationResponse, MutationRegisterArgs, QueryLoginArgs } from '../../generated/graphql';
+import { AuthenticationResponse, RegisterArg, QueryLoginArgs } from '../../generated/graphql';
 
 export const userResolvers: IResolvers = {
 
@@ -10,14 +10,13 @@ export const userResolvers: IResolvers = {
             }
         }
     },
-
-    // Mutation: {
-    //     async MutationRegisterArgs(_: void, args: MutationRegisterArgs): Promise<AuthenticationResponse> {
-    //         return {
-    //             token: "token"
-    //         }
-    //     }
-    // }
+    Mutation: {
+        async MutationRegisterArgs(_: void, args: RegisterArg): Promise<AuthenticationResponse> {
+            return {
+                token: "token"
+            }
+        }
+    }
 }
 
 

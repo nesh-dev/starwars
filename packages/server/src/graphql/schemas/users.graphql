@@ -6,11 +6,11 @@ type AuthenticationResponse {
     token: String!
 }
 
-# extend type Mutation { 
-#     register(input: MutationRegisterArg): AuthenticationResponse!
-# }
+extend type Mutation { 
+    register(input: RegisterArg!): AuthenticationResponse!
+}
 
-input MutationRegisterArg { 
+input RegisterArg { 
     email: String! 
-    password: String
+    password: String!
 }

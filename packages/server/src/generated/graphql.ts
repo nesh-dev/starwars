@@ -19,22 +19,47 @@ export type AuthenticationResponse = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  register?: Maybe<AuthenticationResponse>;
+  _empty?: Maybe<Scalars['String']>;
+  register: AuthenticationResponse;
 };
 
 
 export type MutationRegisterArgs = {
-  email: Scalars['String'];
-  password: Scalars['String'];
+  input: RegisterArg;
+};
+
+export type Page = {
+  page: Scalars['String'];
+};
+
+export type Person = {
+  __typename?: 'Person';
+  name: Scalars['String'];
+  height: Scalars['String'];
+  mass: Scalars['String'];
+  gender: Scalars['String'];
+  homeworld: Scalars['String'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  login?: Maybe<AuthenticationResponse>;
+  _empty?: Maybe<Scalars['String']>;
+  login: AuthenticationResponse;
+  people: Array<Person>;
 };
 
 
 export type QueryLoginArgs = {
+  email: Scalars['String'];
+  password: Scalars['String'];
+};
+
+
+export type QueryPeopleArgs = {
+  input: Page;
+};
+
+export type RegisterArg = {
   email: Scalars['String'];
   password: Scalars['String'];
 };
