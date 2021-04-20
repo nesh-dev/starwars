@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import SearchImage from '../../assets/search.png';
 
-
 const FormInput = styled.input`
     background: #FFFFFF;
     border: 1px solid #000000;
@@ -16,7 +15,7 @@ const FormInput = styled.input`
     &:focus {
         outline: none;
         box-shadow: 0px 0px 2px #FFE81F;
-        border: 1px solid ##FFE81F;
+        border: 1px solid #FFE81F;
     }
 `; 
 

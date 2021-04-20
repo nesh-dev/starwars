@@ -73,8 +73,8 @@ export type RegisterArg = {
 export type ResultObject = {
   __typename?: 'ResultObject';
   count: Scalars['Int'];
-  next: Scalars['String'];
-  previous: Scalars['String'];
+  next?: Maybe<Scalars['String']>;
+  previous?: Maybe<Scalars['String']>;
   results: Array<Person>;
 };
 

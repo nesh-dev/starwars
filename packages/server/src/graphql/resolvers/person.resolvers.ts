@@ -7,7 +7,7 @@ export const peopleResolvers: IResolvers = {
     Query: {
         async people(_: void, args: QueryPeopleArgs): Promise<ResultObject> {
             try {
-                const response = await axios.get(`https://swapi.dev/api/people/?page=${args.input.page}`);
+                const response = await axios.get(`https://swapi.dev/api/people/?page=${args.input?.page}`);
                 const data  = response?.data;
                 return data
             } catch (error) {
