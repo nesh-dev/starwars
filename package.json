@@ -6,6 +6,7 @@
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "start": "lerna run start --stream"
+    "start": "lerna run start --stream", 
+    "codegen": "lerna run graphql-codegen --config /packages/server/codegen.yml --scope=server"
   }
 }
