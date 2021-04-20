@@ -7,7 +7,7 @@ type AuthenticationResponse {
 }
 
 extend type Mutation { 
-    register(input: RegisterArg!): AuthenticationResponse!
+    register(RegisterArg: RegisterArg!): AuthenticationResponse!
 }
 
 input RegisterArg { 

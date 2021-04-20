@@ -1,9 +1,14 @@
 extend type Query {
     people(input:Page!): [Person!]!
+    searchPeople(input: SearchParams!): [Person!]
 }
 
 input Page { 
     page: String!
+}
+
+input SearchParams { 
+    name: String!
 }
 
 type Person{ 

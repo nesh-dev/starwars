@@ -25,7 +25,7 @@ export type Mutation = {
 
 
 export type MutationRegisterArgs = {
-  input: RegisterArg;
+  RegisterArg: RegisterArg;
 };
 
 export type Page = {
@@ -46,6 +46,7 @@ export type Query = {
   _empty?: Maybe<Scalars['String']>;
   login: AuthenticationResponse;
   people: Array<Person>;
+  searchPeople?: Maybe<Array<Person>>;
 };
 
 
@@ -59,7 +60,16 @@ export type QueryPeopleArgs = {
   input: Page;
 };
 
+
+export type QuerySearchPeopleArgs = {
+  input: SearchParams;
+};
+
 export type RegisterArg = {
   email: Scalars['String'];
   password: Scalars['String'];
+};
+
+export type SearchParams = {
+  name: Scalars['String'];
 };
