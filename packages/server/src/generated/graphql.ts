@@ -45,7 +45,7 @@ export type Query = {
   __typename?: 'Query';
   _empty?: Maybe<Scalars['String']>;
   login: AuthenticationResponse;
-  people: Array<Person>;
+  people: ResultObject;
   searchPeople?: Maybe<Array<Person>>;
 };
 
@@ -68,6 +68,14 @@ export type QuerySearchPeopleArgs = {
 export type RegisterArg = {
   email: Scalars['String'];
   password: Scalars['String'];
+};
+
+export type ResultObject = {
+  __typename?: 'ResultObject';
+  count: Scalars['Int'];
+  next: Scalars['String'];
+  previous: Scalars['String'];
+  results: Array<Person>;
 };
 
 export type SearchParams = {

@@ -1,15 +1,15 @@
 import { IResolvers } from 'graphql-tools';
-import { QueryPeopleArgs, Person, QuerySearchPeopleArgs } from '../../generated/graphql';
+import { QueryPeopleArgs, Person, QuerySearchPeopleArgs, ResultObject } from '../../generated/graphql';
 import axios from 'axios';
 
 
 export const peopleResolvers: IResolvers = {
     Query: {
-        async people(_: void, args: QueryPeopleArgs): Promise<[Person]> {
+        async people(_: void, args: QueryPeopleArgs): Promise<ResultObject> {
             try {
                 const response = await axios.get(`https://swapi.dev/api/people/?page=${args.input.page}`);
-                const { data: { results } } = response;
-                return results
+                const data  = response?.data;
+                return data
             } catch (error) {
                 throw new Error(error)
             }

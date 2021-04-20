@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react'; 
+import styled from 'styled-components'; 
 
-export default function index() {
+
+const card = styled.div`
+    
+`; 
+
+ const PersonCard = () => {
     return (
         <div>
             
         </div>
     )
 }
+
+export default PersonCard; 

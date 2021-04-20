@@ -1,5 +1,5 @@
 extend type Query {
-    people(input:Page!): [Person!]!
+    people(input:Page!): ResultObject!
     searchPeople(input: SearchParams!): [Person!]
 }
 
@@ -18,3 +18,10 @@ type Person{
     gender: String!
     homeworld: String!
 }
+
+type ResultObject {
+    count: Int!
+    next: String!
+    previous: String!
+    results: [Person!]!
+ }
