@@ -8,11 +8,16 @@ const FormInput = styled.input`
     background: #FFFFFF;
     border: 1px solid #000000;
     box-sizing: border-box;
-    height: 60px;
+    height: 50px;
     margin-top: 10%;
     position: relative;
     width: 100%;
     padding-left: 5%;
+    &:focus {
+        outline: none;
+        box-shadow: 0px 0px 2px #FFE81F;
+        border: 1px solid ##FFE81F;
+    }
 `; 
 
 const SearchIcon = styled.img`

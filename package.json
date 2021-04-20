@@ -7,6 +7,6 @@
   },
   "scripts": {
     "start": "lerna run start --stream", 
-    "codegen": "lerna run graphql-codegen --config /packages/server/codegen.yml --scope=server"
+    "codegen": "lerna run codegen"
   }
 }
