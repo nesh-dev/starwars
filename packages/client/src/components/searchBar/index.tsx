@@ -25,10 +25,11 @@ const SearchIcon = styled.img`
     position: relative;
 `;
 
-const SearchBar = () => {
+
+const SearchBar = ({onValueChange}:any) => {
     return (
         <div>
-            <FormInput placeholder="Search your favorite Star Wars characters"/>
+            <FormInput placeholder="Search your favorite Star Wars characters" onChange={onValueChange}/>
             <SearchIcon src={SearchImage} />
         </div>
     )

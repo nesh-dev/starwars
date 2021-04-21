@@ -40,7 +40,24 @@ const CountButton = styled(PagButton)`
   }
 `;
 
-const TraverseButton = styled(CountButton)<{ disabled?: boolean }>`
+const NextButton = styled(CountButton)<{ disabled?: boolean }>`
+  ${(props) =>
+    props.disabled &&
+    `
+cursor: none;
+background: #ffff;
+color: #fff;
+border: 1px solid #dddddd;
+&:hover {
+  background: #ffff;
+  color: #ffff;
+  outline: none;
+  border: 1px solid #dddddd;
+}
+`};
+`;
+
+const PrevButton = styled(CountButton)<{ disabled?: boolean }>`
   ${(props) =>
     props.disabled &&
     `
@@ -62,11 +79,12 @@ const active = (pageNumber: string, item: number) => {
 };
 
 const checkNextDisabled = (pagesInfo: any) => {
-  if (pagesInfo?.people?.next == null) return true;
+
+  if (pagesInfo?.next === null) {return true}
 };
 
 const checkPrevDisabled = (pagesInfo: any) => {
-  if (pagesInfo?.people?.previous == null) return true;
+  if (pagesInfo?.previous === null) {return true;}
 };
 const Pagination = ({
   pagesInfo,
@@ -74,17 +92,16 @@ const Pagination = ({
   decrementPage,
   incrementPage,
   pageNumber,
-  pageLimit,
   getCurrentPageInfo,
 }: any) => {
   return (
     <PagContainer>
-      <TraverseButton
+      <PrevButton
         onClick={(e) => decrementPage(e)}
         disabled={checkPrevDisabled(pagesInfo)}
       >
         <img src={KeyLeft} alt="key left" />
-      </TraverseButton>
+      </PrevButton>
 
       {myArray &&
         myArray?.map((item: number, index: number) => (
@@ -96,12 +113,12 @@ const Pagination = ({
           </PagButton>
         ))}
 
-      <TraverseButton
+      <NextButton
         onClick={(e) => incrementPage(e)}
         disabled={checkNextDisabled(pagesInfo)}
       >
         <img src={KeyRight} alt="key right" />
-      </TraverseButton>
+      </NextButton>
     </PagContainer>
   );
 };
