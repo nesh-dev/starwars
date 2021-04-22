@@ -21,7 +21,6 @@ export const peopleResolvers: IResolvers = {
             try {
                 const response = await axios.get(`https://swapi.dev/api/people/?page=${args.input?.page}`);
                 const data = response?.data
-                console.log(data.people)
                 return data
             } catch (error) {
                 throw new Error(error)
@@ -30,7 +29,6 @@ export const peopleResolvers: IResolvers = {
 
         async searchPeople(_: void, args: QuerySearchPeopleArgs): Promise<Person> {
             try {
-                console.log(args.input.name, '>>>>')
                 const response = await axios.get(`https://swapi.dev/api/people/?search=${args.input.name}`)
                 const { data: { results } } = response;
                 return results;

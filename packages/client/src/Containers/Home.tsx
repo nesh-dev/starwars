@@ -4,6 +4,7 @@ import styled from "styled-components";
 import SearchBar from "../components/searchBar";
 import Pagination from "../components/pagination";
 import PeopleList from "../components/peopleList";
+import Loader from "../components/loader";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { GET_STAR_WARS_PEOPLE } from "../graphql/queries/people";
 import { SEARCH_STAR_WARS_PEOPLE } from "../graphql/queries/search";
@@ -44,6 +45,7 @@ const Home = () => {
   // const [characterListData, setCharacterListData] = useState([]);
   const [characterName, setCharacterName] = useState<string>("");
   const [pageInfo, setPageInfo] = useState<any>();
+  const [showPagination, setShowPagination] = useState<boolean>(true);
   const myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const decrementPage = (e: React.MouseEvent<HTMLButtonElement>): void => {
@@ -76,10 +78,18 @@ const Home = () => {
   });
 
   const [debouncedCallApi] = useState(() =>
-    _.debounce(loadSearchResults, 1000)
+    _.debounce(loadSearchResults, 2000)
   );
 
+  const checkPaginationStatus = (value: string): void => {
+    if (value.length > 0) {
+      setShowPagination(false);
+    } else {
+      setShowPagination(true);
+    }
+  };
   const onValueChange = async (e: React.FormEvent<HTMLInputElement>) => {
+    checkPaginationStatus(e.currentTarget.value);
     setCharacterName(e.currentTarget.value);
     await debouncedCallApi();
   };
@@ -88,9 +98,13 @@ const Home = () => {
     setPageInfo(data?.people);
   }, [data?.people]);
 
-  if (loading) return <div>Loading....</div>;
+  if (loading)
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   if (error) return <div> {error.message} </div>;
-
   return (
     <div>
       <Container>
@@ -98,17 +112,8 @@ const Home = () => {
         <Wrapper>
           <SearchBar onValueChange={onValueChange} />
         </Wrapper>
-        <Wrapper>
-          <PeopleList
-            data={
-              searchResults
-                ? searchResults?.searchPeople
-                : data?.people?.results
-            }
-          />
-        </Wrapper>
         <PaginationWrapper>
-          {pageInfo ? (
+          {showPagination ? (
             <Pagination
               pagesInfo={pageInfo}
               myArray={myArray}
@@ -121,6 +126,15 @@ const Home = () => {
             <div></div>
           )}
         </PaginationWrapper>
+        <Wrapper>
+          <PeopleList
+            data={
+              searchResults
+                ? searchResults?.searchPeople
+                : data?.people?.results
+            }
+          />
+        </Wrapper>
       </Container>
     </div>
   );
