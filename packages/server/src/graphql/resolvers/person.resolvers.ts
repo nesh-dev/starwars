@@ -30,6 +30,7 @@ export const peopleResolvers: IResolvers = {
 
         async searchPeople(_: void, args: QuerySearchPeopleArgs): Promise<Person> {
             try {
+                console.log(args.input.name, '>>>>')
                 const response = await axios.get(`https://swapi.dev/api/people/?search=${args.input.name}`)
                 const { data: { results } } = response;
                 return results;

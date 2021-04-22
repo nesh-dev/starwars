@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Person } from "../../generated/graphql";
-import { useHistory } from "react-router-dom";
+import { Person } from '../../generated/graphql';
 
 const Card = styled.div`
   background: #ffffff;
@@ -42,26 +41,11 @@ const Info = styled.div`
   text-alight: center;
 `;
 
-const PersonCard: React.FC<Person> = ({
-  name,
-  height,
-  mass,
-  homeworld,
-  gender,
-}) => {
-  const history = useHistory();
-  const handleRouteNav = (e: React.MouseEvent<HTMLElement>) => {
-    history.push({
-      pathname: `/person/${name}`,
-      state: {
-        // location state
-        update: true,
-      },
-    });
-  };
 
+
+const DetailComponent: React.FC<Person> = ( {name, height, mass, homeworld, gender} ) => {
   return (
-    <Card onClick={(e) => handleRouteNav(e)}>
+    <Card>
       <CardOutline>
         <Text>
           <Title>Name:</Title>
@@ -90,4 +74,4 @@ const PersonCard: React.FC<Person> = ({
   );
 };
 
-export default PersonCard;
+export default DetailComponent;

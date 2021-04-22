@@ -3,13 +3,14 @@ import Home from "./Containers/Home";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import DetailPage from "./Containers/DetailPage";
 
+
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/person/:id/" component={DetailPage} />
+          <Route path="/person/:name/" component={DetailPage} />
         </Switch>
       </BrowserRouter>
     </div>

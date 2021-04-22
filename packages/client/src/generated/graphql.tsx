@@ -46,7 +46,7 @@ export type Query = {
   _empty?: Maybe<Scalars['String']>;
   login: AuthenticationResponse;
   people: ResultObject;
-  searchPeople?: Maybe<Array<Person>>;
+  searchPeople: Array<Person>;
 };
 
 
