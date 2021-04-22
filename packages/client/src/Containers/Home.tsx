@@ -7,6 +7,7 @@ import PeopleList from "../components/peopleList";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { GET_STAR_WARS_PEOPLE } from "../graphql/queries/people";
 import { SEARCH_STAR_WARS_PEOPLE } from "../graphql/queries/search";
+import { ResultObject, Person, Page, SearchParams } from "../generated/graphql";
 import _ from "lodash";
 
 const Container = styled.div`
@@ -30,10 +31,18 @@ const PaginationWrapper = styled(Wrapper)`
   justify-content: center;
 `;
 
+interface QueryData {
+  people: ResultObject;
+}
+
+interface SearchQueryData {
+  searchPeople: [Person];
+}
+
 const Home = () => {
   const [pageNumber, setPageNumber] = useState("1");
-  const [characterListData, setCharacterListData] = useState([]);
-  const [characterName, setCharacterName] = useState<string>();
+  // const [characterListData, setCharacterListData] = useState([]);
+  const [characterName, setCharacterName] = useState<string>("");
   const [pageInfo, setPageInfo] = useState<any>();
   const myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -52,16 +61,19 @@ const Home = () => {
     setPageNumber(item.toString());
   };
 
-  const { data, loading, error } = useQuery(GET_STAR_WARS_PEOPLE, {
-    variables: { page: pageNumber },
-  });
-
-  const [loadSearchResults, { data: searchResults }] = useLazyQuery(
-    SEARCH_STAR_WARS_PEOPLE,
+  const { data, loading, error } = useQuery<QueryData, Page>(
+    GET_STAR_WARS_PEOPLE,
     {
-      variables: { name: characterName },
+      variables: { page: pageNumber },
     }
   );
+
+  const [loadSearchResults, { data: searchResults }] = useLazyQuery<
+    SearchQueryData,
+    SearchParams
+  >(SEARCH_STAR_WARS_PEOPLE, {
+    variables: { name: characterName },
+  });
 
   const [debouncedCallApi] = useState(() =>
     _.debounce(loadSearchResults, 1000)
@@ -73,7 +85,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    setCharacterListData(data?.people?.results);
     setPageInfo(data?.people);
   }, [data?.people]);
 
@@ -89,7 +100,7 @@ const Home = () => {
         </Wrapper>
         <Wrapper>
           <PeopleList
-            people={
+            data={
               searchResults
                 ? searchResults?.searchPeople
                 : data?.people?.results

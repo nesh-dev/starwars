@@ -8,14 +8,20 @@ const Wrapper = styled.div`
   margin-top: 2%;
   position: relative;
 `;
-const PeopleList: React.FC<[Person]> = (people) => {
+
+interface PeopleListProps{ 
+  data: Person[] | undefined
+  
+}
+const PeopleList: React.FC<PeopleListProps> = ({data}) => {
+ 
   return (
     <div>
-      {people &&
-        people?.map((item: Person) => (
+      {
+        data?.map((item, index) => (
           <Wrapper>
             <PersonCard
-              key={item.name}
+              key={index}
               name={item.name}
               height={item.height}
               mass={item.mass}
