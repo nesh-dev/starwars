@@ -64,7 +64,7 @@ const Home = () => {
   );
 
   const [debouncedCallApi] = useState(() =>
-    _.debounce(loadSearchResults, 2000)
+    _.debounce(loadSearchResults, 1000)
   );
 
   const onValueChange = async (e: React.FormEvent<HTMLInputElement>) => {
@@ -89,7 +89,7 @@ const Home = () => {
         </Wrapper>
         <Wrapper>
           <PeopleList
-            data={
+            people={
               searchResults
                 ? searchResults?.searchPeople
                 : data?.people?.results

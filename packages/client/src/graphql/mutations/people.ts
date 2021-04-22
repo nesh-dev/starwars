@@ -13,6 +13,5 @@ export const GET_STAR_WARS_PEOPLE = gql`
       gender, 
       height}
     }
-      
   }
 `;

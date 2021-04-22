@@ -19,6 +19,11 @@ type Person{
     homeworld: String!
 }
 
+# type Homeworld { 
+#     name: String
+
+# }
+
 type ResultObject {
     count: Int!
     next: String

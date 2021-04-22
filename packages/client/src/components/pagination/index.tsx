@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import KeyLeft from "../../assets/key_arrow_left.png";
 import KeyRight from "../../assets/keyboard_arrow_right 1.png";
+import { Person } from "../../generated/graphql";
 
 const PagButton = styled.button<{ active?: boolean }>`
   background: #ffffff;
@@ -86,14 +87,25 @@ const checkNextDisabled = (pagesInfo: any) => {
 const checkPrevDisabled = (pagesInfo: any) => {
   if (pagesInfo?.previous === null) {return true;}
 };
-const Pagination = ({
+
+interface PaginationProps { 
+  pagesInfo: any,
+  myArray: number[],
+  decrementPage: (e: React.MouseEvent<HTMLButtonElement>) => void,
+  incrementPage: (e: React.MouseEvent<HTMLButtonElement>) => void,
+  pageNumber: string, 
+  getCurrentPageInfo:  (e: React.MouseEvent<HTMLButtonElement>, item:number) => void,
+}
+
+
+const Pagination: React.FC<PaginationProps> = ({
   pagesInfo,
   myArray,
   decrementPage,
   incrementPage,
   pageNumber,
   getCurrentPageInfo,
-}: any) => {
+}) => {
   return (
     <PagContainer>
       <PrevButton

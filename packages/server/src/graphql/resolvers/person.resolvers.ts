@@ -4,11 +4,23 @@ import axios from 'axios';
 
 
 export const peopleResolvers: IResolvers = {
+
+    Person: {
+        async homeworld(parent): Promise<string> {
+            try {
+                const response = await axios.get(parent.homeworld)
+                const data = response?.data.name
+                return data;
+            } catch (error) {
+                throw new Error(error)
+            }
+        }
+    },
     Query: {
         async people(_: void, args: QueryPeopleArgs): Promise<ResultObject> {
             try {
                 const response = await axios.get(`https://swapi.dev/api/people/?page=${args.input?.page}`);
-                const data  = response?.data;
+                const data = response?.data;
                 return data
             } catch (error) {
                 throw new Error(error)
