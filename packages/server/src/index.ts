@@ -1,18 +1,22 @@
 import express from 'express'; 
 import { ApolloServer } from 'apollo-server-express'; 
 import schema from './graphql/schemaMapper'; 
+import { environment } from './enviroment';
 
 
-const PORT = '4000'; 
+
+
 
 const app = express(); 
 
 const server = new ApolloServer({ 
-    schema,
+    schema, 
+    introspection: environment.apollo.introspection,
+    playground: environment.apollo.playground
 })
 
 server.applyMiddleware({app, path: '/graphql'});
 
-app.listen(PORT, () => { 
-    console.log(`Graphql now running on port ${PORT}`);
+app.listen(environment.port, () => { 
+    console.log(`Graphql now running on port ${environment.port}`);
 })

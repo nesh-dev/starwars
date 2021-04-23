@@ -1,4 +1,5 @@
-extend type Query {
+
+type Query {
     people(input:Page!): ResultObject!
     searchPeople(input: SearchParams!): [Person!]!
 }
@@ -19,10 +20,7 @@ type Person{
     homeworld: String!
 }
 
-# type Homeworld { 
-#     name: String
 
-# }
 
 type ResultObject {
     count: Int!
@@ -30,3 +28,19 @@ type ResultObject {
     previous: String
     results: [Person!]!
  }
+
+type Query { 
+    login(email: String!, password: String!): AuthenticationResponse!
+}
+
+type AuthenticationResponse { 
+    token: String!
+}
+type Mutation { 
+    register(RegisterArg: RegisterArg!): AuthenticationResponse!
+}
+
+input RegisterArg { 
+    email: String! 
+    password: String!
+}

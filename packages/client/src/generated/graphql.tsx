@@ -19,7 +19,6 @@ export type AuthenticationResponse = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  _empty?: Maybe<Scalars['String']>;
   register: AuthenticationResponse;
 };
 
@@ -43,16 +42,9 @@ export type Person = {
 
 export type Query = {
   __typename?: 'Query';
-  _empty?: Maybe<Scalars['String']>;
-  login: AuthenticationResponse;
   people: ResultObject;
   searchPeople: Array<Person>;
-};
-
-
-export type QueryLoginArgs = {
-  email: Scalars['String'];
-  password: Scalars['String'];
+  login: AuthenticationResponse;
 };
 
 
@@ -63,6 +55,12 @@ export type QueryPeopleArgs = {
 
 export type QuerySearchPeopleArgs = {
   input: SearchParams;
+};
+
+
+export type QueryLoginArgs = {
+  email: Scalars['String'];
+  password: Scalars['String'];
 };
 
 export type RegisterArg = {

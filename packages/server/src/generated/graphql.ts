@@ -19,7 +19,6 @@ export type AuthenticationResponse = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  _empty?: Maybe<Scalars['String']>;
   register: AuthenticationResponse;
 };
 
@@ -43,7 +42,6 @@ export type Person = {
 
 export type Query = {
   __typename?: 'Query';
-  _empty?: Maybe<Scalars['String']>;
   login: AuthenticationResponse;
   people: ResultObject;
   searchPeople: Array<Person>;
