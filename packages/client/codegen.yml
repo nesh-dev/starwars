@@ -1,5 +1,5 @@
 overwrite: true
-schema: "http://localhost:4000/graphql"
+schema: "https://starwars-api-v1.herokuapp.com/graphql"
 documents: null
 generates:
   src/generated/graphql.tsx:
@@ -15,4 +15,3 @@ generates:
   ./graphql.schema.json:
     plugins:
       - "introspection"
-  

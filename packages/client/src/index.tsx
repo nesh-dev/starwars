@@ -13,7 +13,7 @@ import reportWebVitals from "./reportWebVitals";
 const createApolloClient = () => {
   return new ApolloClient<NormalizedCacheObject>({
     link: new HttpLink({
-      uri: "http://localhost:4000/graphql",
+      uri: "https://starwars-api-v1.herokuapp.com/graphql",
     }),
     cache: new InMemoryCache(),
   });
