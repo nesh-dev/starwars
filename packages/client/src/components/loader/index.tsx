@@ -9,13 +9,6 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: "50px";
-  position: relative;
-`;
-
 const ReactLoadingSkeleton = () => (
   <Container>
     <div>

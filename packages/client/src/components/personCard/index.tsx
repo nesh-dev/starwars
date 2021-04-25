@@ -26,20 +26,16 @@ const Text = styled.div`
   justify-content: space-between;
 `;
 
-const SpanPropData = styled.span`
-  color: #ffe81f;
-`;
-
 const Title = styled.span`
   font-weight: bold;
   margin-right: 5%;
 `;
 
 const Info = styled.div`
-  margin-right: 50%;
+
   font-size: 18px;
   font-weight: 200;
-  text-alight: center;
+  align-self: flex-end;
 `;
 
 const PersonCard: React.FC<Person> = ({

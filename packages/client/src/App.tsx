@@ -1,7 +1,7 @@
 import React from "react";
-import Home from "./Containers/Home";
+import Home from "./containers/Home";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import DetailPage from "./Containers/DetailPage";
+import DetailPage from "./containers/DetailPage";
 
 
 function App() {

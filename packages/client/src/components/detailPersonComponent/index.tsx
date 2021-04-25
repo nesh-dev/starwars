@@ -25,10 +25,6 @@ const Text = styled.div`
   justify-content: space-between;
 `;
 
-const SpanPropData = styled.span`
-  color: #ffe81f;
-`;
-
 const Title = styled.span`
   font-weight: bold;
   margin-right: 5%;

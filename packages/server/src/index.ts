@@ -4,9 +4,6 @@ import schema from './graphql/schemaMapper';
 import { environment } from './enviroment';
 
 
-
-
-
 const app = express(); 
 
 const server = new ApolloServer({ 
